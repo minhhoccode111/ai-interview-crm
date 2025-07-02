@@ -6,7 +6,11 @@
 ![Python](https://img.shields.io/badge/Python-3.8+-green?style=for-the-badge&logo=python)
 ![Flask](https://img.shields.io/badge/Flask-3.0.0-orange?style=for-the-badge&logo=flask)
 ![AI Powered](https://img.shields.io/badge/AI%20Powered-Google%20Gemini-purple?style=for-the-badge&logo=google)
-![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
+![License](https://img.shields.io/b---
+
+## 🛠️ **Development & Testing**
+
+### 🧪 **Testing Framework**nse-MIT-yellow?style=for-the-badge)
 
 ### 🚀 **Revolutionary AI-Powered Interview Practice Platform**
 
@@ -707,6 +711,84 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 - [OpenAI Whisper](https://github.com/openai/whisper)
 - [SQLAlchemy ORM](https://www.sqlalchemy.org/)
 
+
+---
+
+## 👨‍💻 **Meet the Creator**
+
+<div align="center">
+
+### 🌟 **Hari Kumar** - *Full Stack Developer & AI Enthusiast*
+
+<img src="https://github.com/hari7261.png" alt="HariOM Kumar" width="150" height="150" style="border-radius: 50%; border: 4px solid #4CAF50; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+
+**🚀 Passionate about building innovative solutions that make a difference**
+
+</div>
+
+<table>
+<tr>
+<td width="50%">
+
+#### 🎯 **About Me**
+- 💻 **Full Stack Developer** with expertise in Python, JavaScript, and AI
+- 🤖 **AI/ML Enthusiast** specializing in NLP and conversational AI
+- 🎓 **Computer Science Student** with a passion for cutting-edge technology
+- 🌟 **Open Source Contributor** committed to building tools that help others succeed
+
+#### 🛠️ **Tech Stack**
+- **Languages**: Python, JavaScript, TypeScript, Java, C++
+- **Frameworks**: Flask, React, Node.js, Express, Django
+- **AI/ML**: TensorFlow, PyTorch, OpenAI, Google Gemini, Hugging Face
+- **Databases**: PostgreSQL, MongoDB, SQLite, Redis
+- **Cloud**: AWS, Google Cloud, Azure, Vercel, Heroku
+
+</tr>
+</table>
+
+### 💡 **Why I Built AI Interview CRM**
+
+> *"Having gone through countless interviews myself and seeing friends struggle with interview preparation, I realized there was a gap in accessible, AI-powered practice platforms. This project combines my passion for AI with my desire to help fellow developers and job seekers succeed in their careers."*
+
+#### 🎯 **Project Vision**
+- **🤖 Democratize AI**: Make advanced AI interview practice accessible to everyone
+- **📈 Skill Enhancement**: Help candidates identify and improve their weak areas
+- **🌍 Global Impact**: Support job seekers worldwide in achieving their career goals
+- **🔄 Continuous Learning**: Provide personalized feedback for ongoing improvement
+
+### 🎨 **Development Philosophy**
+
+<div align="center">
+
+| 🎯 **User-Centric** | 🔧 **Clean Code** | 🚀 **Performance** | 🌟 **Innovation** |
+|:---:|:---:|:---:|:---:|
+| Always put user needs first | Write maintainable, readable code | Optimize for speed and efficiency | Embrace cutting-edge technology |
+| Gather feedback continuously | Follow best practices | Test performance rigorously | Experiment with new ideas |
+| Design intuitive interfaces | Document thoroughly | Scale intelligently | Stay ahead of trends |
+
+</div>
+
+### 📊 **Project Impact**
+
+<div align="center">
+
+[![GitHub followers](https://img.shields.io/github/followers/hari7261?label=Follow&style=social)](https://github.com/hari7261)
+[![GitHub stars](https://img.shields.io/github/stars/hari7261/AI-INTERVIEW-CRM?style=social)](https://github.com/hari7261/AI-INTERVIEW-CRM)
+[![Twitter Follow](https://img.shields.io/twitter/follow/hari7261?style=social)](https://twitter.com/hari7261)
+
+**🎯 Helping developers and job seekers worldwide achieve their career dreams!**
+
+</div>
+
+### 💬 **Get in Touch**
+
+I'm always excited to connect with fellow developers, discuss new ideas, or help with any questions you might have about the project!
+
+<div align="center">
+
+**🤝 Let's build something amazing together!**
+
+</div>
 
 ---
 
