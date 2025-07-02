@@ -1,0 +1,148 @@
+# 🚫 AI Interview CRM - Git Ignore File
+
+# 🐍 Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# 🔧 Virtual Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.virtualenv
+
+# 🗄️ Database Files
+*.db
+*.sqlite
+*.sqlite3
+instance/
+database.sql
+
+# 📁 Upload Directories & Files
+static/uploads/*
+!static/uploads/.gitkeep
+uploads/
+*.pdf
+*.wav
+*.mp3
+*.m4a
+*.ogg
+
+# 🔑 Environment & Config Files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+config.local.py
+secrets.py
+
+# 📊 Logs & Debug
+*.log
+logs/
+debug.log
+error.log
+
+# 🔍 IDE & Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# 📦 Node.js (if using npm for frontend tools)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# 🧪 Testing
+.coverage
+.pytest_cache/
+.tox/
+.coverage.*
+coverage.xml
+*.cover
+.hypothesis/
+htmlcov/
+
+# 📚 Documentation Build
+docs/_build/
+.sphinx/
+
+# 🚀 Deployment
+.deploy/
+docker-compose.override.yml
+
+# 🔧 OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# 🎯 Temporary Files
+*.tmp
+*.temp
+*.bak
+*.backup
+*~
+
+# 🔐 Security
+*.pem
+*.key
+*.crt
+*.csr
+
+# 📱 Mobile
+.expo/
+.expo-shared/
+
+# 🎨 Design Files
+*.psd
+*.ai
+*.sketch
+*.fig
+
+# 📈 Analytics & Reports
+reports/
+analytics/
+*.report
+
+# 🏗️ Build Tools
+.sass-cache/
+.cache/
+.parcel-cache/
+
+# Keep important empty directories
+!.gitkeep

@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock Interview - AI Interview CRM</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-robot"></i>
+                <span>AI Interview CRM</span>
+            </div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/dashboard">Dashboard</a>
+                <a href="/interview" class="active">Interview</a>
+                <a href="#" id="logoutBtn">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="interview-main">
+        <div class="container">
+            <!-- Progress Indicator -->
+            <div class="progress-indicator">
+                <div class="progress-step active" id="step1">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Upload Resume</div>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" id="step2">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Interview</div>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" id="step3">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Results</div>
+                </div>
+            </div>
+
+            <!-- Upload Section -->
+            <div id="uploadSection" class="interview-section">
+                <div class="section-header">
+                    <h1>Start Your Mock Interview</h1>
+                    <p>Upload your resume or enter your information to get personalized interview questions</p>
+                </div>
+
+                <div class="upload-options">
+                    <div class="upload-option" id="fileOption">
+                        <i class="fas fa-file-pdf"></i>
+                        <h3>Upload PDF Resume</h3>
+                        <p>Select your resume file (PDF format)</p>
+                        <div id="fileSection" style="display: none;">
+                            <input type="file" id="resumeFile" class="file-input" accept=".pdf">
+                            <label for="resumeFile" class="file-input-label">
+                                <i class="fas fa-upload"></i> Choose File
+                            </label>
+                            <div id="fileName" class="file-name"></div>
+                        </div>
+                    </div>
+
+                    <div class="upload-option" id="textOption">
+                        <i class="fas fa-keyboard"></i>
+                        <h3>Enter Resume Text</h3>
+                        <p>Paste or type your resume content</p>
+                        <div id="textSection" style="display: none;">
+                            <textarea id="resumeText" placeholder="Paste your resume content here...
+
+For example:
+John Doe
+Software Engineer
+Email: john@example.com
+Phone: (555) 123-4567
+
+EXPERIENCE:
+• Senior Software Engineer at Tech Corp (2020-Present)
+• Full Stack Developer at StartupXYZ (2018-2020)
+
+SKILLS:
+• Programming: JavaScript, Python, Java
+• Frameworks: React, Node.js, Django
+• Databases: MySQL, MongoDB
+
+EDUCATION:
+• Bachelor of Computer Science, University XYZ (2018)
+
+..." rows="12"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="upload-actions">
+                    <button id="submitResume" class="btn btn-primary" disabled>
+                        <i class="fas fa-arrow-right"></i> Process Resume & Start Interview
+                    </button>
+                </div>
+            </div>
+
+            <!-- Interview Section -->
+            <div id="interviewSection" class="interview-section" style="display: none;">
+                <div class="interview-header">
+                    <div class="interview-progress">
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="progressBar"></div>
+                        </div>
+                        <div class="question-counter">
+                            Question <span id="questionCounter">1 of 10</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question Display -->
+                <div class="question-display" id="questionDisplay">
+                    <h3>Loading question...</h3>
+                    <p>Please wait while we prepare your personalized interview question.</p>
+                </div>
+
+                <!-- Answer Input -->
+                <div class="answer-input">
+                    <div class="input-tabs">
+                        <button class="tab-button active" data-tab="text">
+                            <i class="fas fa-keyboard"></i> Text Answer
+                        </button>
+                        <button class="tab-button" data-tab="audio">
+                            <i class="fas fa-microphone"></i> Voice Answer
+                        </button>
+                    </div>
+
+                    <!-- Text Tab -->
+                    <div id="textTab" class="tab-content active">
+                        <textarea id="textAnswer" placeholder="Type your answer here...
+
+Tips:
+• Be specific and provide examples
+• Structure your response clearly
+• Take your time to think before answering" rows="6"></textarea>
+                        <div class="tab-actions">
+                            <button id="submitTextAnswer" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i> Submit Answer
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Audio Tab -->
+                    <div id="audioTab" class="tab-content">
+                        <div class="audio-controls">
+                            <button id="recordBtn" class="record-button">
+                                <i class="fas fa-microphone"></i>
+                            </button>
+                            <div class="audio-status" id="audioStatus">Click record to start</div>
+                        </div>
+                        <audio id="audioPreview" controls style="display: none; width: 100%; margin: 1rem 0;"></audio>
+                        <div class="tab-actions">
+                            <button id="submitAudioAnswer" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i> Submit Recording
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Evaluation Display -->
+                <div id="evaluationDisplay" class="evaluation-display" style="display: none;">
+                    <!-- Evaluation content will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Instructions Panel -->
+            <div class="instructions-panel">
+                <h3><i class="fas fa-info-circle"></i> Interview Tips</h3>
+                <ul>
+                    <li><strong>Be Specific:</strong> Use concrete examples from your experience</li>
+                    <li><strong>STAR Method:</strong> Situation, Task, Action, Result for behavioral questions</li>
+                    <li><strong>Think Aloud:</strong> Explain your thought process for technical questions</li>
+                    <li><strong>Stay Calm:</strong> Take your time to formulate clear responses</li>
+                    <li><strong>Ask Questions:</strong> Show engagement by asking clarifying questions</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+        <div class="spinner"></div>
+        <p>Processing...</p>
+    </div>
+
+    <!-- Interview Styles -->
+    <style>
+        .interview-main {
+            padding: 2rem 0;
+            min-height: calc(100vh - 80px);
+        }
+
+        .progress-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem 0 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #e2e8f0;
+            color: #718096;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .progress-step.active .step-number {
+            background-color: #667eea;
+            color: white;
+        }
+
+        .progress-step.completed .step-number {
+            background-color: #48bb78;
+            color: white;
+        }
+
+        .step-label {
+            font-size: 0.9rem;
+            color: #718096;
+            font-weight: 500;
+        }
+
+        .progress-step.active .step-label {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .progress-line {
+            flex: 1;
+            height: 2px;
+            background-color: #e2e8f0;
+            margin: 0 1rem;
+            position: relative;
+            top: -1rem;
+        }
+
+        .interview-section {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h1 {
+            font-size: 2.5rem;
+            color: #2d3748;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: #718096;
+            font-size: 1.1rem;
+        }
+
+        .upload-actions {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .interview-header {
+            margin-bottom: 2rem;
+        }
+
+        .interview-progress {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar-container {
+            flex: 1;
+            height: 8px;
+            background-color: #e2e8f0;
+            border-radius: 4px;
+            margin-right: 1rem;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .question-counter {
+            font-weight: 600;
+            color: #667eea;
+            white-space: nowrap;
+        }
+
+        .file-name {
+            margin-top: 1rem;
+            padding: 0.5rem;
+            background-color: #f7fafc;
+            border-radius: 4px;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        .instructions-panel {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            margin-top: 2rem;
+        }
+
+        .instructions-panel h3 {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .instructions-panel h3 i {
+            margin-right: 0.5rem;
+        }
+
+        .instructions-panel ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .instructions-panel li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .instructions-panel li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #a78bfa;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .navbar .nav-links a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .progress-indicator {
+                margin: 1rem 0 2rem;
+            }
+            
+            .step-label {
+                font-size: 0.8rem;
+            }
+            
+            .interview-section {
+                padding: 1.5rem;
+            }
+            
+            .section-header h1 {
+                font-size: 2rem;
+            }
+            
+            .interview-progress {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .progress-bar-container {
+                margin-right: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .progress-indicator {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .progress-line {
+                display: none;
+            }
+            
+            .input-tabs {
+                flex-direction: column;
+            }
+            
+            .interview-section {
+                padding: 1rem;
+            }
+        }
+
+        /* Animation for evaluation display */
+        .evaluation-display {
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Interview completion styles */
+        .interview-complete {
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .completion-animation {
+            font-size: 4rem;
+            color: #48bb78;
+            margin-bottom: 2rem;
+            animation: bounceIn 0.8s ease;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .interview-complete h2 {
+            color: #2d3748;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+
+        .final-score {
+            margin: 2rem 0;
+        }
+
+        .final-score h3 {
+            color: #2d3748;
+            margin-top: 1rem;
+        }
+
+        .completion-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .completion-actions .btn {
+            min-width: 150px;
+        }
+    </style>
+
+    <script src="/static/js/main.js"></script>
+    <script>
+        // Initialize interview page
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!requireAuth()) return;
+            
+            // Enable resume submission when option is selected
+            const fileOption = document.getElementById('fileOption');
+            const textOption = document.getElementById('textOption');
+            const submitBtn = document.getElementById('submitResume');
+            const fileInput = document.getElementById('resumeFile');
+            const textArea = document.getElementById('resumeText');
+            
+            function checkSubmissionReady() {
+                const hasFile = fileInput?.files?.length > 0;
+                const hasText = textArea?.value?.trim().length > 10;
+                
+                if (submitBtn) {
+                    submitBtn.disabled = !(hasFile || hasText);
+                }
+            }
+            
+            // File input change
+            fileInput?.addEventListener('change', checkSubmissionReady);
+            textArea?.addEventListener('input', checkSubmissionReady);
+            
+            // Update progress steps
+            function updateProgressStep(stepNumber) {
+                const steps = document.querySelectorAll('.progress-step');
+                steps.forEach((step, index) => {
+                    step.classList.remove('active', 'completed');
+                    if (index + 1 === stepNumber) {
+                        step.classList.add('active');
+                    } else if (index + 1 < stepNumber) {
+                        step.classList.add('completed');
+                    }
+                });
+            }
+            
+            // Override hideUploadSection to update progress
+            const originalHideUploadSection = window.hideUploadSection;
+            window.hideUploadSection = function() {
+                if (originalHideUploadSection) originalHideUploadSection();
+                updateProgressStep(2);
+            };
+            
+            // Override showInterviewComplete to update progress
+            const originalShowInterviewComplete = window.showInterviewComplete;
+            window.showInterviewComplete = function(data) {
+                if (originalShowInterviewComplete) originalShowInterviewComplete(data);
+                updateProgressStep(3);
+            };
+        });
+    </script>
+</body>
+</html>

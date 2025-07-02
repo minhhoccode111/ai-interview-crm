@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - AI Interview CRM</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-robot"></i>
+                <span>AI Interview CRM</span>
+            </div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/interview">New Interview</a>
+                <a href="/dashboard" class="active">Dashboard</a>
+                <a href="#" id="logoutBtn">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="dashboard-main">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1>Your Dashboard</h1>
+                <p>Track your interview progress and improve your skills</p>
+            </div>
+
+            <!-- Stats Overview -->
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3><i class="fas fa-clipboard-list"></i> Total Interviews</h3>
+                    <div class="stat-number" id="totalInterviews">0</div>
+                    <p>Practice sessions completed</p>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3><i class="fas fa-check-circle"></i> Completed</h3>
+                    <div class="stat-number" id="completedInterviews">0</div>
+                    <p>Successfully finished</p>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3><i class="fas fa-chart-line"></i> Average Score</h3>
+                    <div class="stat-number" id="averageScore">0/100</div>
+                    <p>Overall performance</p>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3><i class="fas fa-trophy"></i> Progress</h3>
+                    <div class="stat-number" id="improvementTrend">Loading...</div>
+                    <p>Your improvement trend</p>
+                </div>
+            </div>
+
+            <!-- Performance Chart -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2>Performance Over Time</h2>
+                    <p>Track your improvement across interviews</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="performanceChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+
+            <!-- Skills Breakdown -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2>Skills Assessment</h2>
+                    <p>Your strengths and areas for improvement</p>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Technical Skills</span>
+                            <span class="skill-score" id="technicalScore">0/100</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="technicalProgress" style="width: 0%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Communication</span>
+                            <span class="skill-score" id="communicationScore">0/100</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="communicationProgress" style="width: 0%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Problem Solving</span>
+                            <span class="skill-score" id="problemSolvingScore">0/100</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="problemSolvingProgress" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Interviews -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2>Recent Interviews</h2>
+                    <p>Your latest practice sessions</p>
+                </div>
+                <div class="recent-interviews" id="recentInterviews">
+                    <div class="loading-message">Loading recent interviews...</div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2>Quick Actions</h2>
+                </div>
+                <div class="actions-grid">
+                    <a href="/interview" class="action-card">
+                        <i class="fas fa-plus-circle"></i>
+                        <h3>Start New Interview</h3>
+                        <p>Begin a new practice session</p>
+                    </a>
+
+                    <div class="action-card" onclick="viewAnalytics()">
+                        <i class="fas fa-chart-bar"></i>
+                        <h3>View Analytics</h3>
+                        <p>Detailed performance analysis</p>
+                    </div>
+
+                    <div class="action-card" onclick="downloadReports()">
+                        <i class="fas fa-download"></i>
+                        <h3>Download Reports</h3>
+                        <p>Get your interview reports</p>
+                    </div>
+
+                    <div class="action-card" onclick="updateProfile()">
+                        <i class="fas fa-user-edit"></i>
+                        <h3>Update Profile</h3>
+                        <p>Manage your account settings</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recommendations -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2>Personalized Recommendations</h2>
+                    <p>AI-generated suggestions to improve your performance</p>
+                </div>
+                <div class="recommendations" id="recommendations">
+                    <div class="recommendation-item">
+                        <i class="fas fa-lightbulb"></i>
+                        <div class="recommendation-content">
+                            <h4>Practice Technical Questions</h4>
+                            <p>Focus on algorithm and data structure questions to improve your technical score.</p>
+                        </div>
+                    </div>
+                    <div class="recommendation-item">
+                        <i class="fas fa-comments"></i>
+                        <div class="recommendation-content">
+                            <h4>Improve Communication</h4>
+                            <p>Work on articulating your thoughts more clearly and concisely.</p>
+                        </div>
+                    </div>
+                    <!-- More recommendations will be loaded dynamically -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Analytics Modal -->
+    <div id="analyticsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAnalyticsModal()">&times;</span>
+            <div class="modal-header">
+                <h2>Detailed Analytics</h2>
+            </div>
+            <div class="modal-body" id="analyticsContent">
+                <div class="loading-message">Loading analytics...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <!-- Custom Dashboard Styles -->
+    <style>
+        .dashboard-main {
+            padding: 2rem 0;
+            min-height: calc(100vh - 80px);
+        }
+
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .dashboard-header h1 {
+            font-size: 2.5rem;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .dashboard-header p {
+            color: #718096;
+            font-size: 1.1rem;
+        }
+
+        .dashboard-section {
+            margin: 3rem 0;
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+        }
+
+        .section-header h2 {
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: #718096;
+        }
+
+        .chart-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .skills-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .skill-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .skill-score {
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .recent-interviews {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .interview-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .interview-item:last-child {
+            border-bottom: none;
+        }
+
+        .interview-date {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        .interview-score {
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .interview-status {
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .interview-status.completed {
+            background-color: #c6f6d5;
+            color: #2f855a;
+        }
+
+        .interview-status.incomplete {
+            background-color: #fed7d7;
+            color: #c53030;
+        }
+
+        .actions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .action-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .action-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .action-card i {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .action-card h3 {
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .action-card p {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        .recommendations {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .recommendation-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .recommendation-item:last-child {
+            border-bottom: none;
+        }
+
+        .recommendation-item i {
+            font-size: 1.5rem;
+            color: #667eea;
+            margin-right: 1rem;
+            margin-top: 0.25rem;
+        }
+
+        .recommendation-content h4 {
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .recommendation-content p {
+            color: #718096;
+            line-height: 1.6;
+        }
+
+        .loading-message {
+            text-align: center;
+            padding: 2rem;
+            color: #718096;
+        }
+
+        .navbar .nav-links a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .actions-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .interview-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <script src="/static/js/main.js"></script>
+    <script>
+        // Dashboard specific functions
+        function viewAnalytics() {
+            loadDetailedAnalytics();
+            document.getElementById('analyticsModal').style.display = 'block';
+        }
+
+        function closeAnalyticsModal() {
+            document.getElementById('analyticsModal').style.display = 'none';
+        }
+
+        function downloadReports() {
+            showNotification('Feature coming soon!', 'info');
+        }
+
+        function updateProfile() {
+            showNotification('Profile update feature coming soon!', 'info');
+        }
+
+        async function loadDetailedAnalytics() {
+            const token = localStorage.getItem('token');
+            const analyticsContent = document.getElementById('analyticsContent');
+            
+            if (!token) return;
+            
+            try {
+                const response = await fetch('/api/dashboard/analytics', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    analyticsContent.innerHTML = `
+                        <div class="analytics-summary">
+                            <h3>Performance Analytics</h3>
+                            <div class="analytics-stats">
+                                <div class="stat">
+                                    <span class="stat-label">Total Practice Time:</span>
+                                    <span class="stat-value">${data.total_practice_time || 0} minutes</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">Strongest Skill:</span>
+                                    <span class="stat-value">${data.strongest_skill || 'N/A'}</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">Needs Focus:</span>
+                                    <span class="stat-value">${data.weakest_skill || 'N/A'}</span>
+                                </div>
+                            </div>
+                            ${data.recommendations && data.recommendations.length > 0 ? `
+                                <div class="analytics-recommendations">
+                                    <h4>Improvement Recommendations:</h4>
+                                    <ul>
+                                        ${data.recommendations.map(rec => `<li>${rec}</li>`).join('')}
+                                    </ul>
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                } else {
+                    analyticsContent.innerHTML = '<p>Failed to load analytics data.</p>';
+                }
+            } catch (error) {
+                console.error('Analytics error:', error);
+                analyticsContent.innerHTML = '<p>Error loading analytics data.</p>';
+            }
+        }
+
+        // Initialize dashboard when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!requireAuth()) return;
+            
+            // Load dashboard data
+            loadDashboardData();
+            
+            // Update skills display
+            setTimeout(updateSkillsDisplay, 1000);
+        });
+
+        function updateSkillsDisplay() {
+            // This will be called after dashboard data is loaded
+            const avgScores = window.dashboardData?.average_scores || {};
+            
+            updateSkillProgress('technical', avgScores.technical || 0);
+            updateSkillProgress('communication', avgScores.communication || 0);
+            updateSkillProgress('problem_solving', avgScores.problem_solving || 0);
+        }
+
+        function updateSkillProgress(skill, score) {
+            const scoreElement = document.getElementById(`${skill}Score`);
+            const progressElement = document.getElementById(`${skill}Progress`);
+            
+            if (scoreElement) scoreElement.textContent = `${score}/100`;
+            if (progressElement) progressElement.style.width = `${score}%`;
+        }
+
+        // Override updateDashboard to store data globally
+        const originalUpdateDashboard = window.updateDashboard;
+        window.updateDashboard = function(data) {
+            window.dashboardData = data;
+            if (originalUpdateDashboard) {
+                originalUpdateDashboard(data);
+            }
+            updateSkillsDisplay();
+        };
+    </script>
+</body>
+</html>
