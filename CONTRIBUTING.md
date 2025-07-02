@@ -80,11 +80,11 @@ We pledge to make participation in our project a harassment-free experience for 
 
 ```bash
 # 1️⃣ Fork and clone your fork
-git clone https://github.com/YOUR_USERNAME/ai-interview-crm.git
-cd ai-interview-crm
+git clone https://github.com/YOUR_USERNAME/AI-INTERVIEW-CRM.git
+cd AI-INTERVIEW-CRM
 
 # 2️⃣ Add upstream remote
-git remote add upstream https://github.com/ORIGINAL_OWNER/ai-interview-crm.git
+git remote add upstream https://github.com/hari7261/AI-INTERVIEW-CRM.git
 
 # 3️⃣ Create virtual environment
 python -m venv venv
@@ -429,9 +429,9 @@ Active contributors may be invited to become maintainers. Maintainers:
 
 Don't hesitate to ask questions! We're here to help:
 
-- 💬 Open a [GitHub Discussion](https://github.com/yourusername/ai-interview-crm/discussions)
-- 🐛 Create an [Issue](https://github.com/yourusername/ai-interview-crm/issues) for bugs
-- 📧 Email us at contribute@ai-interview-crm.com
+- 💬 Open a [GitHub Discussion](https://github.com/hari7261/AI-INTERVIEW-CRM/discussions)
+- 🐛 Create an [Issue](https://github.com/hari7261/AI-INTERVIEW-CRM/issues) for bugs
+- 📧 Email us at hari7261@gmail.com
 
 ---
 

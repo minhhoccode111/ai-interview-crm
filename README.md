@@ -14,6 +14,9 @@
 
 [🎯 Features](#-core-features-overview) • [🚀 Quick Start](#-quick-start-guide) • [📖 Documentation](#-detailed-module-documentation) • [🤝 Contributing](#-contributing)
 
+[![GitHub Repository](https://img.shields.io/badge/GitHub-AI--INTERVIEW--CRM-black?style=for-the-badge&logo=github)](https://github.com/hari7261/AI-INTERVIEW-CRM)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=vercel)](https://ai-interview-crm.vercel.app)
+
 </div>
 
 ---
@@ -97,8 +100,8 @@ graph TB
 
 ```bash
 # 1️⃣ Clone the repository
-git clone https://github.com/yourusername/ai-interview-crm.git
-cd ai-interview-crm
+git clone https://github.com/hari7261/AI-INTERVIEW-CRM.git
+cd AI-INTERVIEW-CRM
 
 # 2️⃣ Create virtual environment
 python -m venv venv
@@ -424,7 +427,86 @@ journey
 
 ---
 
-## 🛠️ **Development & Testing**
+## �‍💻 **Meet the Creator**
+
+<div align="center">
+
+### 🌟 **Hari Kumar** - *Full Stack Developer & AI Enthusiast*
+
+<img src="https://github.com/hari7261.png" alt="HariOM Kumar" width="150" height="150" style="border-radius: 50%; border: 4px solid #4CAF50; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+
+**🚀 Passionate about building innovative solutions that make a difference**
+
+</div>
+
+<table>
+<tr>
+<td width="50%">
+
+#### 🎯 **About Me**
+- 💻 **Full Stack Developer** with expertise in Python, JavaScript, and AI
+- 🤖 **AI/ML Enthusiast** specializing in NLP and conversational AI
+- 🎓 **Computer Science Student** with a passion for cutting-edge technology
+- 🌟 **Open Source Contributor** committed to building tools that help others succeed
+
+#### 🛠️ **Tech Stack**
+- **Languages**: Python, JavaScript, TypeScript, Java, C++
+- **Frameworks**: Flask, React, Node.js, Express, Django
+- **AI/ML**: TensorFlow, PyTorch, OpenAI, Google Gemini, Hugging Face
+- **Databases**: PostgreSQL, MongoDB, SQLite, Redis
+- **Cloud**: AWS, Google Cloud, Azure, Vercel, Heroku
+
+</tr>
+</table>
+
+### 💡 **Why I Built AI Interview CRM**
+
+> *"Having gone through countless interviews myself and seeing friends struggle with interview preparation, I realized there was a gap in accessible, AI-powered practice platforms. This project combines my passion for AI with my desire to help fellow developers and job seekers succeed in their careers."*
+
+#### 🎯 **Project Vision**
+- **🤖 Democratize AI**: Make advanced AI interview practice accessible to everyone
+- **📈 Skill Enhancement**: Help candidates identify and improve their weak areas
+- **🌍 Global Impact**: Support job seekers worldwide in achieving their career goals
+- **🔄 Continuous Learning**: Provide personalized feedback for ongoing improvement
+
+### 🎨 **Development Philosophy**
+
+<div align="center">
+
+| 🎯 **User-Centric** | 🔧 **Clean Code** | 🚀 **Performance** | 🌟 **Innovation** |
+|:---:|:---:|:---:|:---:|
+| Always put user needs first | Write maintainable, readable code | Optimize for speed and efficiency | Embrace cutting-edge technology |
+| Gather feedback continuously | Follow best practices | Test performance rigorously | Experiment with new ideas |
+| Design intuitive interfaces | Document thoroughly | Scale intelligently | Stay ahead of trends |
+
+</div>
+
+### 📊 **Project Impact**
+
+<div align="center">
+
+[![GitHub followers](https://img.shields.io/github/followers/hari7261?label=Follow&style=social)](https://github.com/hari7261)
+[![GitHub stars](https://img.shields.io/github/stars/hari7261/AI-INTERVIEW-CRM?style=social)](https://github.com/hari7261/AI-INTERVIEW-CRM)
+[![Twitter Follow](https://img.shields.io/twitter/follow/hari7261?style=social)](https://twitter.com/hari7261)
+
+**🎯 Helping developers and job seekers worldwide achieve their career dreams!**
+
+</div>
+
+### 💬 **Get in Touch**
+
+I'm always excited to connect with fellow developers, discuss new ideas, or help with any questions you might have about the project!
+
+<div align="center">
+
+
+**🤝 Let's build something amazing together!**
+
+</div>
+
+---
+
+## �🛠️ **Development & Testing**
 
 ### 🧪 **Testing Framework**
 
@@ -558,7 +640,7 @@ CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
 
 1. **🍴 Fork the Repository**
    ```bash
-   git clone https://github.com/yourusername/ai-interview-crm.git
+   git clone https://github.com/hari7261/AI-INTERVIEW-CRM.git
    ```
 
 2. **🌿 Create Feature Branch**
@@ -625,20 +707,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 - [OpenAI Whisper](https://github.com/openai/whisper)
 - [SQLAlchemy ORM](https://www.sqlalchemy.org/)
 
----
-
-## 📞 **Support & Contact**
-
-### 💬 **Get Help**
-- **📧 Email**: support@ai-interview-crm.com
-- **💬 Discord**: [Join our community](https://discord.gg/ai-interview-crm)
-- **📱 Twitter**: [@AIInterviewCRM](https://twitter.com/AIInterviewCRM)
-- **🐛 Issues**: [GitHub Issues](https://github.com/yourusername/ai-interview-crm/issues)
-
-### 📚 **Documentation**
-- **📖 Wiki**: [Complete Documentation](https://github.com/yourusername/ai-interview-crm/wiki)
-- **🎥 Video Tutorials**: [YouTube Channel](https://youtube.com/ai-interview-crm)
-- **📝 Blog**: [Development Blog](https://blog.ai-interview-crm.com)
 
 ---
 
@@ -646,14 +714,14 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ## 🎯 **Ready to Revolutionize Interview Preparation?**
 
-### 🚀 [Get Started Now](https://github.com/yourusername/ai-interview-crm) • ⭐ [Star on GitHub](https://github.com/yourusername/ai-interview-crm) • 🐛 [Report Issues](https://github.com/yourusername/ai-interview-crm/issues)
+### 🚀 [Get Started Now](https://github.com/hari7261/AI-INTERVIEW-CRM) • ⭐ [Star on GitHub](https://github.com/hari7261/AI-INTERVIEW-CRM) • 🐛 [Report Issues](https://github.com/hari7261/AI-INTERVIEW-CRM/issues)
 
-**Made with ❤️ by developers, for developers**
+**Made with ❤️ by [Hari](https://github.com/hari7261), for developers worldwide**
 
-[![GitHub Stars](https://img.shields.io/github/stars/yourusername/ai-interview-crm?style=social)](https://github.com/yourusername/ai-interview-crm)
-[![GitHub Forks](https://img.shields.io/github/forks/yourusername/ai-interview-crm?style=social)](https://github.com/yourusername/ai-interview-crm)
-[![GitHub Issues](https://img.shields.io/github/issues/yourusername/ai-interview-crm)](https://github.com/yourusername/ai-interview-crm/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/yourusername/ai-interview-crm)](https://github.com/yourusername/ai-interview-crm/pulls)
+[![GitHub Stars](https://img.shields.io/github/stars/hari7261/AI-INTERVIEW-CRM?style=social)](https://github.com/hari7261/AI-INTERVIEW-CRM)
+[![GitHub Forks](https://img.shields.io/github/forks/hari7261/AI-INTERVIEW-CRM?style=social)](https://github.com/hari7261/AI-INTERVIEW-CRM)
+[![GitHub Issues](https://img.shields.io/github/issues/hari7261/AI-INTERVIEW-CRM)](https://github.com/hari7261/AI-INTERVIEW-CRM/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/hari7261/AI-INTERVIEW-CRM)](https://github.com/hari7261/AI-INTERVIEW-CRM/pulls)
 
 </div>
 
