@@ -595,13 +595,19 @@ function displayQuestion() {
 function clearAnswerInputs() {
   const textAnswer = document.getElementById("textAnswer");
   const audioStatus = document.getElementById("audioStatus");
+  const audioFileName = document.getElementById("audioFileName");
+  const audioFileInput = document.getElementById("audioFile");
 
   if (textAnswer) textAnswer.value = "";
   if (audioStatus) audioStatus.textContent = "Click record to start";
+  if (audioFileName) audioFileName.textContent = "";
+  if (audioFileInput) audioFileInput.value = "";
 
   // Reset recording state
   isRecording = false;
   audioChunks = [];
+  window.currentAudioBlob = null;
+  window.currentAudioFile = null;
   updateRecordButton();
 }
 
@@ -610,6 +616,7 @@ function initializeAudioRecording() {
   const recordBtn = document.getElementById("recordBtn");
   const tabButtons = document.querySelectorAll(".tab-button");
   const tabContents = document.querySelectorAll(".tab-content");
+  const audioFileInput = document.getElementById("audioFile");
 
   // Tab switching
   tabButtons.forEach((button) => {
@@ -624,6 +631,11 @@ function initializeAudioRecording() {
     recordBtn.addEventListener("click", toggleRecording);
   }
 
+  // Audio file input
+  if (audioFileInput) {
+    audioFileInput.addEventListener("change", handleAudioFileUpload);
+  }
+
   // Submit answer buttons
   const submitTextBtn = document.getElementById("submitTextAnswer");
   const submitAudioBtn = document.getElementById("submitAudioAnswer");
@@ -634,6 +646,22 @@ function initializeAudioRecording() {
 
   if (submitAudioBtn) {
     submitAudioBtn.addEventListener("click", () => submitAnswer("audio"));
+  }
+}
+
+// Handle audio file upload
+function handleAudioFileUpload(e) {
+  const file = e.target.files[0];
+  if (file) {
+    window.currentAudioFile = file;
+    document.getElementById("audioFileName").textContent = file.name;
+    // Clear recorded audio if a file is selected
+    window.currentAudioBlob = null;
+    const audioPreview = document.getElementById("audioPreview");
+    if (audioPreview) {
+      audioPreview.style.display = "none";
+      audioPreview.src = "";
+    }
   }
 }
 
@@ -755,11 +783,18 @@ async function submitAnswer(type) {
     }
     formData.append("text_answer", textAnswer.value.trim());
   } else {
-    if (!window.currentAudioBlob) {
-      showNotification("Please record your answer first", "error");
+    if (window.currentAudioFile) {
+      formData.append(
+        "audio",
+        window.currentAudioFile,
+        window.currentAudioFile.name,
+      );
+    } else if (window.currentAudioBlob) {
+      formData.append("audio", window.currentAudioBlob, "answer.wav");
+    } else {
+      showNotification("Please record or upload your answer first", "error");
       return;
     }
-    formData.append("audio", window.currentAudioBlob, "answer.wav");
   }
 
   showLoading(true);
@@ -1209,4 +1244,3 @@ document
       console.error("Error:", error);
     }
   });
-

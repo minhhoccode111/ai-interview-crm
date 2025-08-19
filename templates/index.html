@@ -1,168 +1,222 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AI Interview CRM - Home</title>
-    <link rel="stylesheet" href="/static/css/styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-</head>
-<body>
+    <link rel="stylesheet" href="/static/css/styles.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <i class="fas fa-robot"></i>
-                <span>AI Interview CRM</span>
-            </div>
-            <div class="nav-links" id="navLinks">
-                <a href="#home">Home</a>
-                <a href="#features">Features</a>
-                <a href="#about">About</a>
-                <a href="/dashboard" id="dashboardLink" style="display: none;">Dashboard</a>
-                <a href="#" id="loginBtn">Login</a>
-                <a href="#" id="logoutBtn" style="display: none;">Logout</a>
-            </div>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+      <div class="nav-container">
+        <div class="logo">
+          <i class="fas fa-robot"></i>
+          <span>AI Interview CRM</span>
         </div>
+        <div class="nav-links" id="navLinks">
+          <a href="#home">Home</a>
+          <a href="#features">Features</a>
+          <a href="#about">About</a>
+          <a href="/dashboard" id="dashboardLink" style="display: none"
+            >Dashboard</a
+          >
+          <a href="#" id="loginBtn">Login</a>
+          <a href="#" id="logoutBtn" style="display: none">Logout</a>
+        </div>
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
     </nav>
 
     <main>
-        <!-- Hero Section -->
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <h1>Master Your Interview Skills with AI</h1>
-                <p>Practice realistic interviews, get instant feedback, and improve your performance with our AI-powered platform.</p>
-                <div class="hero-buttons">
-                    <button class="btn btn-primary" id="startInterviewBtn">Start Practice Interview</button>
-                    <button class="btn btn-secondary" id="learnMoreBtn">Learn More</button>
-                </div>
-            </div>
-            <div class="hero-animation">
-                <div class="ai-avatar">
-                    <i class="fas fa-robot"></i>
-                </div>
-            </div>
-        </section>
+      <!-- Hero Section -->
+      <section id="home" class="hero">
+        <div class="hero-content">
+          <h1>Master Your Interview Skills with AI</h1>
+          <p>
+            Practice realistic interviews, get instant feedback, and improve
+            your performance with our AI-powered platform.
+          </p>
+          <div class="hero-buttons">
+            <button class="btn btn-primary" id="startInterviewBtn">
+              Start Practice Interview
+            </button>
+            <button class="btn btn-secondary" id="learnMoreBtn">
+              Learn More
+            </button>
+          </div>
+        </div>
+        <div class="hero-animation">
+          <div class="ai-avatar">
+            <i class="fas fa-robot"></i>
+          </div>
+        </div>
+      </section>
 
-        <!-- Features Section -->
-        <section id="features" class="features">
-            <div class="container">
-                <h2>Why Choose AI Interview CRM?</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <i class="fas fa-brain"></i>
-                        <h3>AI-Powered Analysis</h3>
-                        <p>Get intelligent feedback on your answers using advanced AI technology.</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-microphone"></i>
-                        <h3>Voice & Text Support</h3>
-                        <p>Practice with both voice and text responses for maximum flexibility.</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-chart-line"></i>
-                        <h3>Performance Tracking</h3>
-                        <p>Monitor your progress over time with detailed analytics and reports.</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-file-pdf"></i>
-                        <h3>Resume Analysis</h3>
-                        <p>Upload your resume and get tailored questions based on your experience.</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-trophy"></i>
-                        <h3>Skill Assessment</h3>
-                        <p>Evaluate your technical and soft skills with comprehensive scoring.</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-lightbulb"></i>
-                        <h3>Personalized Tips</h3>
-                        <p>Receive customized recommendations to improve your interview performance.</p>
-                    </div>
-                </div>
+      <!-- Features Section -->
+      <section id="features" class="features">
+        <div class="container">
+          <h2>Why Choose AI Interview CRM?</h2>
+          <div class="features-grid">
+            <div class="feature-card">
+              <i class="fas fa-brain"></i>
+              <h3>AI-Powered Analysis</h3>
+              <p>
+                Get intelligent feedback on your answers using advanced AI
+                technology.
+              </p>
             </div>
-        </section>
+            <div class="feature-card">
+              <i class="fas fa-microphone"></i>
+              <h3>Voice & Text Support</h3>
+              <p>
+                Practice with both voice and text responses for maximum
+                flexibility.
+              </p>
+            </div>
+            <div class="feature-card">
+              <i class="fas fa-chart-line"></i>
+              <h3>Performance Tracking</h3>
+              <p>
+                Monitor your progress over time with detailed analytics and
+                reports.
+              </p>
+            </div>
+            <div class="feature-card">
+              <i class="fas fa-file-pdf"></i>
+              <h3>Resume Analysis</h3>
+              <p>
+                Upload your resume and get tailored questions based on your
+                experience.
+              </p>
+            </div>
+            <div class="feature-card">
+              <i class="fas fa-trophy"></i>
+              <h3>Skill Assessment</h3>
+              <p>
+                Evaluate your technical and soft skills with comprehensive
+                scoring.
+              </p>
+            </div>
+            <div class="feature-card">
+              <i class="fas fa-lightbulb"></i>
+              <h3>Personalized Tips</h3>
+              <p>
+                Receive customized recommendations to improve your interview
+                performance.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <!-- About Section -->
-        <section id="about" class="about">
-            <div class="container">
-                <div class="about-content">
-                    <div class="about-text">
-                        <h2>About AI Interview CRM</h2>
-                        <p>Our platform combines cutting-edge AI technology with proven interview techniques to help you succeed in your job search. Whether you're a recent graduate or an experienced professional, our system adapts to your level and provides personalized feedback.</p>
-                        <ul>
-                            <li><i class="fas fa-check"></i> Realistic interview simulation</li>
-                            <li><i class="fas fa-check"></i> Instant feedback and scoring</li>
-                            <li><i class="fas fa-check"></i> Industry-specific questions</li>
-                            <li><i class="fas fa-check"></i> Progress tracking and analytics</li>
-                        </ul>
-                    </div>
-                    <div class="about-image">
-                        <div class="image-placeholder">
-                            <i class="fas fa-users"></i>
-                        </div>
-                    </div>
-                </div>
+      <!-- About Section -->
+      <section id="about" class="about">
+        <div class="container">
+          <div class="about-content">
+            <div class="about-text">
+              <h2>About AI Interview CRM</h2>
+              <p>
+                Our platform combines cutting-edge AI technology with proven
+                interview techniques to help you succeed in your job search.
+                Whether you're a recent graduate or an experienced professional,
+                our system adapts to your level and provides personalized
+                feedback.
+              </p>
+              <ul>
+                <li>
+                  <i class="fas fa-check"></i> Realistic interview simulation
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> Instant feedback and scoring
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> Industry-specific questions
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> Progress tracking and analytics
+                </li>
+              </ul>
             </div>
-        </section>
+            <div class="about-image">
+              <div class="image-placeholder">
+                <i class="fas fa-users"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <!-- CTA Section -->
-        <section class="cta">
-            <div class="container">
-                <h2>Ready to Ace Your Next Interview?</h2>
-                <p>Join thousands of professionals who have improved their interview skills with our AI platform.</p>
-                <button class="btn btn-primary" id="getStartedBtn">Get Started Now</button>
-            </div>
-        </section>
+      <!-- CTA Section -->
+      <section class="cta">
+        <div class="container">
+          <h2>Ready to Ace Your Next Interview?</h2>
+          <p>
+            Join thousands of professionals who have improved their interview
+            skills with our AI platform.
+          </p>
+          <button class="btn btn-primary" id="getStartedBtn">
+            Get Started Now
+          </button>
+        </div>
+      </section>
     </main>
 
     <!-- Login Modal -->
     <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="closeModal">&times;</span>
-            <div class="modal-header">
-                <h2 id="modalTitle">Login</h2>
-            </div>
-            <div class="modal-body">
-                <form id="authForm">
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" name="password" required>
-                    </div>
-                    <div class="form-group" id="nameGroup" style="display: none;">
-                        <label for="fullName">Full Name:</label>
-                        <input type="text" id="fullName" name="fullName">
-                    </div>
-                    <button type="submit" class="btn btn-primary" id="authSubmit">Login</button>
-                </form>
-                <div class="auth-switch">
-                    <p id="switchText">Don't have an account? <a href="#" id="switchMode">Sign up</a></p>
-                </div>
-            </div>
+      <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <div class="modal-header">
+          <h2 id="modalTitle">Login</h2>
         </div>
+        <div class="modal-body">
+          <form id="authForm">
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input type="password" id="password" name="password" required />
+            </div>
+            <div class="form-group" id="nameGroup" style="display: none">
+              <label for="fullName">Full Name:</label>
+              <input type="text" id="fullName" name="fullName" />
+            </div>
+            <button type="submit" class="btn btn-primary" id="authSubmit">
+              Login
+            </button>
+          </form>
+          <div class="auth-switch">
+            <p id="switchText">
+              Don't have an account? <a href="#" id="switchMode">Sign up</a>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Loading Spinner -->
-    <div id="loadingSpinner" class="loading-spinner" style="display: none;">
-        <div class="spinner"></div>
-        <p>Loading...</p>
+    <div id="loadingSpinner" class="loading-spinner" style="display: none">
+      <div class="spinner"></div>
+      <p>Loading...</p>
     </div>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 AI Interview CRM. All rights reserved.</p>
-        </div>
+      <div class="container">
+        <p>&copy; 2024 AI Interview CRM. All rights reserved.</p>
+      </div>
     </footer>
 
     <script src="/static/js/main.js"></script>
-</body>
+  </body>
 </html>
+
