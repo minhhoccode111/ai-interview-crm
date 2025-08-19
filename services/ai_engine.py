@@ -11,9 +11,9 @@ genai.configure(api_key=Config.GEMINI_API_KEY)
 
 class InterviewEngine:
     def __init__(self):
-        self.model = genai.GenerativeModel('gemini-1.5-flash')
         self.vectorizer = TfidfVectorizer(max_features=1000, stop_words='english')
         
+        self.model = genai.GenerativeModel("gemini-2.5-flash-lite-preview-06-17")
     def parse_resume(self, text_content):
         """Parse resume text into structured data using Gemini AI"""
         prompt = f"""
