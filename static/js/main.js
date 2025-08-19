@@ -562,7 +562,7 @@ function showInterviewSection() {
 function displayQuestion() {
   if (currentQuestionIndex >= questions.length) {
     // Interview completed
-    completeInterview();
+    setTimeout(completeInterview, 7000);
     return;
   }
 
