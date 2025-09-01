@@ -6,7 +6,7 @@
 ![Python](https://img.shields.io/badge/Python-3.8+-green?style=for-the-badge&logo=python)
 ![Flask](https://img.shields.io/badge/Flask-3.0.0-orange?style=for-the-badge&logo=flask)
 ![AI Powered](https://img.shields.io/badge/AI%20Powered-Google%20Gemini-purple?style=for-the-badge&logo=google)
-![License](https://img.shields.io/b---
+![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 
 ## 🛠️ **Development & Testing**
 
@@ -14,7 +14,7 @@
 
 ### 🚀 **Revolutionary AI-Powered Interview Practice Platform**
 
-*Transform your interview preparation with cutting-edge AI technology, real-time feedback, and comprehensive performance analytics.*
+_Transform your interview preparation with cutting-edge AI technology, real-time feedback, and comprehensive performance analytics._
 
 [🎯 Features](#-core-features-overview) • [🚀 Quick Start](#-quick-start-guide) • [📖 Documentation](#-detailed-module-documentation) • [🤝 Contributing](#-contributing)
 
@@ -32,6 +32,7 @@
 <td width="50%">
 
 ### 🧠 **AI-Powered Intelligence**
+
 - 🤖 **Google Gemini Integration** for smart question generation
 - 📊 **Real-time Performance Analysis** with detailed feedback
 - 🎯 **Personalized Questions** based on your resume
@@ -41,6 +42,7 @@
 <td width="50%">
 
 ### 🎤 **Multi-Modal Experience**
+
 - 🗣️ **Voice-to-Text** powered by OpenAI Whisper
 - ⌨️ **Text Input** for flexible response options
 - 📄 **PDF Resume Processing** with intelligent parsing
@@ -56,11 +58,11 @@
 
 <div align="center">
 
-| 🔐 **Authentication** | 📄 **Resume Processing** | 🎤 **AI Interviews** | 📊 **Analytics** |
-|:---:|:---:|:---:|:---:|
-| JWT-based security | PDF & text parsing | Voice/text responses | Performance tracking |
-| User management | Skills extraction | Real-time feedback | Progress visualization |
-| Session handling | Experience analysis | Follow-up questions | Detailed reports |
+| 🔐 **Authentication** | 📄 **Resume Processing** | 🎤 **AI Interviews** |    📊 **Analytics**    |
+| :-------------------: | :----------------------: | :------------------: | :--------------------: |
+|  JWT-based security   |    PDF & text parsing    | Voice/text responses |  Performance tracking  |
+|    User management    |    Skills extraction     |  Real-time feedback  | Progress visualization |
+|   Session handling    |   Experience analysis    | Follow-up questions  |    Detailed reports    |
 
 </div>
 
@@ -75,16 +77,16 @@ graph TB
     B --> D[🗄️ Database Layer]
     B --> E[🎤 Voice Processor]
     B --> F[📄 PDF Parser]
-    
+
     C --> G[🤖 Google Gemini]
     C --> H[📊 Similarity Engine]
-    
+
     E --> I[🗣️ Whisper STT]
-    
+
     D --> J[👤 Users]
     D --> K[📋 Resumes]
     D --> L[🎯 Interviews]
-    
+
     style A fill:#e1f5fe
     style B fill:#f3e5f5
     style C fill:#e8f5e8
@@ -96,6 +98,7 @@ graph TB
 ## 🚀 **Quick Start Guide**
 
 ### 📋 **Prerequisites**
+
 - 🐍 Python 3.8 or higher
 - 🔑 Google Gemini API Key
 - 💾 50MB free disk space
@@ -126,6 +129,7 @@ python app.py
 ```
 
 ### 🌐 **Access the Platform**
+
 Open your browser and navigate to: **http://localhost:5000** 🎉
 
 ---
@@ -138,27 +142,30 @@ Open your browser and navigate to: **http://localhost:5000** 🎉
 <summary>Click to expand Authentication details</summary>
 
 #### 🛡️ **Security Features**
+
 - **JWT Token-based Authentication**: Secure session management
 - **Password Hashing**: Using Werkzeug's security utilities
 - **Email Validation**: Proper email format checking
 - **Session Expiry**: Automatic token expiration
 
 #### 🔧 **API Endpoints**
+
 - `POST /api/auth/register` - User registration
 - `POST /api/auth/login` - User authentication
-- `GET /api/auth/profile` - Get user profile
+- `GET  /api/auth/profile` - Get user profile
 - `POST /api/auth/logout` - Secure logout
 
 #### 💡 **Usage Example**
+
 ```javascript
 // Register new user
 const registerUser = async (userData) => {
-    const response = await fetch('/api/auth/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(userData)
-    });
-    return response.json();
+  const response = await fetch("/api/auth/register", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(userData),
+  });
+  return response.json();
 };
 ```
 
@@ -170,23 +177,27 @@ const registerUser = async (userData) => {
 <summary>Click to expand Resume Processing details</summary>
 
 #### 🎯 **Intelligent Resume Analysis**
+
 - **PDF Text Extraction**: Using PyPDF2 for accurate text parsing
 - **Skills Identification**: AI-powered skill detection
 - **Experience Parsing**: Automatic work history extraction
 - **Education Analysis**: Academic background processing
 
 #### 🔧 **Supported Formats**
+
 - 📄 PDF files (primary)
 - 📝 Plain text input
 - 🔄 Multiple resume versions
 
 #### 💡 **AI Processing Pipeline**
+
 1. **Text Extraction** → Raw text from PDF/input
 2. **Content Analysis** → Google Gemini processes content
 3. **Structured Parsing** → JSON format with categorized data
 4. **Validation** → Ensures data quality and completeness
 
 #### 📊 **Extracted Data Structure**
+
 ```json
 {
     "name": "John Doe",
@@ -214,12 +225,14 @@ const registerUser = async (userData) => {
 #### 🎯 **Core AI Capabilities**
 
 ##### 🤖 **Question Generation**
+
 - **Resume-Based Questions**: Tailored to candidate's background
 - **Category Distribution**: Technical, behavioral, situational
 - **Difficulty Scaling**: Adaptive question complexity
 - **Follow-up Intelligence**: Context-aware follow-up questions
 
 ##### 📊 **Answer Evaluation System**
+
 ```python
 evaluation_criteria = {
     "technical_accuracy": "Technical knowledge demonstration",
@@ -230,11 +243,13 @@ evaluation_criteria = {
 ```
 
 ##### 🎯 **Scoring Algorithm**
+
 1. **AI Analysis** (60%): Google Gemini evaluates content quality
 2. **Similarity Matching** (40%): TF-IDF compares with ideal answers
 3. **Final Score**: Weighted combination with detailed breakdown
 
 #### 🔧 **Performance Optimization**
+
 - **Lightweight Processing**: TF-IDF instead of heavy transformers
 - **Caching Strategy**: Reduces API calls for similar questions
 - **Error Handling**: Graceful fallbacks for AI service issues
@@ -248,17 +263,19 @@ evaluation_criteria = {
 <summary>Click to expand Voice Processing details</summary>
 
 #### 🗣️ **Speech-to-Text Pipeline**
+
 - **Audio Capture**: Browser MediaRecorder API
 - **Format Support**: WAV, MP3, M4A, OGG
 - **Whisper Integration**: OpenAI's state-of-the-art STT
 - **Quality Enhancement**: Noise reduction and normalization
 
 #### 🔧 **Technical Implementation**
+
 ```python
 class VoiceProcessor:
     def __init__(self):
         self.whisper_model = whisper.load_model("base")
-    
+
     def speech_to_text(self, audio_path):
         # Advanced audio processing
         result = self.whisper_model.transcribe(audio_path)
@@ -266,16 +283,18 @@ class VoiceProcessor:
 ```
 
 #### 📱 **Frontend Integration**
+
 ```javascript
 // Voice recording functionality
 const recordVoice = async () => {
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    const recorder = new MediaRecorder(stream);
-    // Recording logic...
+  const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+  const recorder = new MediaRecorder(stream);
+  // Recording logic...
 };
 ```
 
 #### 🛠️ **Error Handling**
+
 - **Microphone Permissions**: Graceful permission handling
 - **Audio Quality**: Automatic quality detection
 - **Fallback Options**: Text input when voice fails
@@ -289,33 +308,36 @@ const recordVoice = async () => {
 <summary>Click to expand Analytics details</summary>
 
 #### 📈 **Performance Metrics**
+
 - **Overall Score**: Comprehensive performance rating
 - **Skill Breakdown**: Individual skill assessments
 - **Progress Tracking**: Improvement over time
 - **Comparative Analysis**: Benchmarking against standards
 
 #### 📄 **PDF Report Generation**
+
 ```python
 def generate_comprehensive_report(self, data):
     pdf = FPDF()
     pdf.add_page()
-    
+
     # Header with branding
     self._add_header(pdf, data)
-    
+
     # Performance summary with charts
     self._add_performance_summary(pdf, data)
-    
+
     # Detailed question analysis
     self._add_question_breakdown(pdf, data)
-    
+
     # Recommendations and next steps
     self._add_recommendations(pdf, data)
-    
+
     return pdf.output(dest='S').encode('latin-1')
 ```
 
 #### 🎯 **Report Components**
+
 1. **Executive Summary**: High-level performance overview
 2. **Skills Analysis**: Detailed breakdown by competency
 3. **Question-by-Question**: Individual answer evaluations
@@ -332,6 +354,7 @@ def generate_comprehensive_report(self, data):
 #### 📊 **Database Schema**
 
 ##### 👤 **Users Table**
+
 ```sql
 CREATE TABLE users (
     id INTEGER PRIMARY KEY,
@@ -343,6 +366,7 @@ CREATE TABLE users (
 ```
 
 ##### 📄 **Resumes Table**
+
 ```sql
 CREATE TABLE resumes (
     id INTEGER PRIMARY KEY,
@@ -355,6 +379,7 @@ CREATE TABLE resumes (
 ```
 
 ##### 🎯 **Interviews Table**
+
 ```sql
 CREATE TABLE interviews (
     id INTEGER PRIMARY KEY,
@@ -369,6 +394,7 @@ CREATE TABLE interviews (
 ```
 
 #### 🔧 **ORM Models**
+
 - **SQLAlchemy Integration**: Object-relational mapping
 - **Relationship Management**: Foreign key constraints
 - **JSON Field Support**: Flexible data storage
@@ -406,24 +432,28 @@ journey
 ### 📱 **User Interface Walkthrough**
 
 #### 🏠 **Landing Page** (`templates/index.html`)
+
 - **Hero Section**: Compelling value proposition
 - **Feature Highlights**: Key platform benefits
 - **Call-to-Action**: Quick registration process
 - **Social Proof**: Success stories and testimonials
 
 #### 🎯 **Dashboard** (`templates/dashboard.html`)
+
 - **Performance Overview**: Quick stats and metrics
 - **Recent Activity**: Latest interviews and scores
 - **Progress Tracking**: Visual improvement charts
 - **Quick Actions**: Start new interview, view reports
 
 #### 🎤 **Interview Interface** (`templates/interview.html`)
+
 - **Question Display**: Clear, readable question presentation
 - **Response Options**: Voice recording or text input
 - **Progress Indicator**: Current question position
 - **Real-time Feedback**: Instant scoring and suggestions
 
 #### 📊 **Report Viewer** (`templates/report.html`)
+
 - **Executive Summary**: High-level performance overview
 - **Detailed Analysis**: Question-by-question breakdown
 - **Visual Charts**: Performance graphs and comparisons
@@ -431,12 +461,12 @@ journey
 
 ---
 
-
 ## �🛠️ **Development & Testing**
 
 ### 🧪 **Testing Framework**
 
 #### 🔬 **Comprehensive Test Suite** (`test_platform.py`)
+
 ```bash
 # Run all tests
 python test_platform.py
@@ -448,6 +478,7 @@ python -m pytest tests/ -k "ai_engine"
 ```
 
 #### 📊 **Test Coverage**
+
 - ✅ **Authentication**: Registration, login, JWT validation
 - ✅ **Resume Processing**: PDF parsing, AI analysis
 - ✅ **Interview Flow**: Question generation, answer evaluation
@@ -460,12 +491,14 @@ python -m pytest tests/ -k "ai_engine"
 ### 🎨 **Frontend Customization**
 
 #### 🎨 **Styling** (`static/css/styles.css`)
+
 - **CSS Variables**: Easy theme customization
 - **Responsive Design**: Mobile-first approach
 - **Animation Library**: Smooth transitions and effects
 - **Component System**: Reusable UI components
 
 #### ⚡ **JavaScript** (`static/js/main.js`)
+
 - **Modern ES6+**: Clean, maintainable code
 - **API Integration**: Fetch-based HTTP client
 - **Voice Recording**: MediaRecorder API integration
@@ -474,6 +507,7 @@ python -m pytest tests/ -k "ai_engine"
 ### 🔧 **Configuration Options**
 
 #### ⚙️ **Environment Variables** (`.env`)
+
 ```bash
 # 🤖 AI Configuration
 GOOGLE_API_KEY=your_gemini_api_key_here
@@ -508,6 +542,7 @@ REPORT_GENERATION=True
 ### 🌐 **Production Deployment**
 
 #### 🐳 **Docker Deployment**
+
 ```dockerfile
 FROM python:3.9-slim
 
@@ -522,12 +557,14 @@ CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
 ```
 
 #### ☁️ **Cloud Platforms**
+
 - **🔧 Heroku**: One-click deployment
 - **☁️ AWS**: EC2, ECS, or Lambda
 - **🌐 Google Cloud**: App Engine or Cloud Run
 - **💙 Azure**: App Service or Container Instances
 
 #### 🗄️ **Database Options**
+
 - **Development**: SQLite (included)
 - **Production**: PostgreSQL, MySQL, or MongoDB
 - **Cloud**: AWS RDS, Google Cloud SQL, Azure Database
@@ -535,6 +572,7 @@ CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
 ### 🔒 **Security Considerations**
 
 #### 🛡️ **Production Security**
+
 - **HTTPS**: SSL/TLS encryption
 - **Environment Variables**: Secure secret management
 - **Rate Limiting**: API endpoint protection
@@ -546,6 +584,7 @@ CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
 ## 📈 **Performance Optimization**
 
 ### ⚡ **Speed Optimizations**
+
 - **Lightweight AI**: TF-IDF instead of heavy transformers (90% size reduction)
 - **Efficient Caching**: Redis integration ready
 - **Database Indexing**: Optimized queries
@@ -553,6 +592,7 @@ CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
 - **Lazy Loading**: On-demand resource loading
 
 ### 📊 **Monitoring & Analytics**
+
 - **Performance Metrics**: Response time tracking
 - **Error Monitoring**: Automated error reporting
 - **Usage Analytics**: User behavior insights
@@ -565,11 +605,13 @@ CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
 ### 🎯 **How to Contribute**
 
 1. **🍴 Fork the Repository**
+
    ```bash
    git clone https://github.com/hari7261/AI-INTERVIEW-CRM.git
    ```
 
 2. **🌿 Create Feature Branch**
+
    ```bash
    git checkout -b feature/amazing-feature
    ```
@@ -580,6 +622,7 @@ CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
    - Update documentation
 
 4. **✅ Test Your Changes**
+
    ```bash
    python test_platform.py
    ```
@@ -590,13 +633,16 @@ CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
    - Include screenshots if UI changes
 
 ### 📋 **Development Guidelines**
+
 - **Code Style**: PEP 8 for Python, ESLint for JavaScript
 - **Documentation**: Docstrings for all functions
 - **Testing**: Minimum 80% code coverage
 - **Version Control**: Semantic versioning (semver)
 
 ### 🐛 **Bug Reports**
+
 Use GitHub Issues with the following template:
+
 - **Bug Description**: Clear, concise description
 - **Steps to Reproduce**: Detailed reproduction steps
 - **Expected Behavior**: What should happen
@@ -610,6 +656,7 @@ Use GitHub Issues with the following template:
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
 ### 🎉 **What This Means**
+
 - ✅ **Commercial Use**: Use in commercial projects
 - ✅ **Modification**: Modify and adapt the code
 - ✅ **Distribution**: Share with others
@@ -622,17 +669,18 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 ## 🌟 **Acknowledgments**
 
 ### 🙏 **Special Thanks**
+
 - **Google Gemini**: For powerful AI capabilities
 - **OpenAI Whisper**: For excellent speech-to-text
 - **Flask Community**: For the amazing web framework
 - **Open Source Contributors**: For inspiration and tools
 
 ### 🔗 **Useful Resources**
+
 - [Flask Documentation](https://flask.palletsprojects.com/)
 - [Google Gemini API](https://ai.google.dev/)
 - [OpenAI Whisper](https://github.com/openai/whisper)
 - [SQLAlchemy ORM](https://www.sqlalchemy.org/)
-
 
 ---
 
@@ -640,7 +688,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 <div align="center">
 
-### 🌟 **Hari Kumar** - *Full Stack Developer & AI Enthusiast*
+### 🌟 **Hari Kumar** - _Full Stack Developer & AI Enthusiast_
 
 <img src="https://github.com/hari7261.png" alt="HariOM Kumar" width="150" height="150" style="border-radius: 50%; border: 4px solid #4CAF50; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
 
@@ -653,12 +701,14 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 <td width="50%">
 
 #### 🎯 **About Me**
+
 - 💻 **Full Stack Developer** with expertise in Python, JavaScript, and AI
 - 🤖 **AI/ML Enthusiast** specializing in NLP and conversational AI
 - 🎓 **Computer Science Student** with a passion for cutting-edge technology
 - 🌟 **Open Source Contributor** committed to building tools that help others succeed
 
 #### 🛠️ **Tech Stack**
+
 - **Languages**: Python, JavaScript, TypeScript, Java, C++
 - **Frameworks**: Flask, React, Node.js, Express, Django
 - **AI/ML**: TensorFlow, PyTorch, OpenAI, Google Gemini, Hugging Face
@@ -670,9 +720,10 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ### 💡 **Why I Built AI Interview CRM**
 
-> *"Having gone through countless interviews myself and seeing friends struggle with interview preparation, I realized there was a gap in accessible, AI-powered practice platforms. This project combines my passion for AI with my desire to help fellow developers and job seekers succeed in their careers."*
+> _"Having gone through countless interviews myself and seeing friends struggle with interview preparation, I realized there was a gap in accessible, AI-powered practice platforms. This project combines my passion for AI with my desire to help fellow developers and job seekers succeed in their careers."_
 
 #### 🎯 **Project Vision**
+
 - **🤖 Democratize AI**: Make advanced AI interview practice accessible to everyone
 - **📈 Skill Enhancement**: Help candidates identify and improve their weak areas
 - **🌍 Global Impact**: Support job seekers worldwide in achieving their career goals
@@ -682,11 +733,11 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 <div align="center">
 
-| 🎯 **User-Centric** | 🔧 **Clean Code** | 🚀 **Performance** | 🌟 **Innovation** |
-|:---:|:---:|:---:|:---:|
-| Always put user needs first | Write maintainable, readable code | Optimize for speed and efficiency | Embrace cutting-edge technology |
-| Gather feedback continuously | Follow best practices | Test performance rigorously | Experiment with new ideas |
-| Design intuitive interfaces | Document thoroughly | Scale intelligently | Stay ahead of trends |
+|     🎯 **User-Centric**      |         🔧 **Clean Code**         |        🚀 **Performance**         |        🌟 **Innovation**        |
+| :--------------------------: | :-------------------------------: | :-------------------------------: | :-----------------------------: |
+| Always put user needs first  | Write maintainable, readable code | Optimize for speed and efficiency | Embrace cutting-edge technology |
+| Gather feedback continuously |       Follow best practices       |    Test performance rigorously    |    Experiment with new ideas    |
+| Design intuitive interfaces  |        Document thoroughly        |        Scale intelligently        |      Stay ahead of trends       |
 
 </div>
 
@@ -731,4 +782,4 @@ I'm always excited to connect with fellow developers, discuss new ideas, or help
 
 ---
 
-*🎉 Thank you for choosing AI Interview CRM! Together, let's help candidates ace their interviews and build their dream careers! 🚀*
+_🎉 Thank you for choosing AI Interview CRM! Together, let's help candidates ace their interviews and build their dream careers! 🚀_
