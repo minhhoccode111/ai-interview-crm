@@ -11,8 +11,23 @@ genai.configure(api_key=Config.GEMINI_API_KEY)
 
 
 class InterviewEngine:
-    def __init__(self):
-        self.vectorizer = TfidfVectorizer(max_features=1000, stop_words="english")
+    def __init__(self, language='en'):
+        """Initialize the interview engine with language support
+
+        Args:
+            language (str): Language code (e.g., 'en', 'vi')
+        """
+        self.language = language
+
+        # Configure TF-IDF vectorizer based on language
+        language_config = Config.SUPPORTED_LANGUAGES.get(language, Config.SUPPORTED_LANGUAGES['en'])
+        stopwords = language_config.get('tfidf_stopwords')
+
+        if stopwords:
+            self.vectorizer = TfidfVectorizer(max_features=1000, stop_words=stopwords)
+        else:
+            # For languages without built-in stopwords, use no stopwords
+            self.vectorizer = TfidfVectorizer(max_features=1000, stop_words=None)
 
         self.model = genai.GenerativeModel("gemini-2.5-flash-lite-preview-06-17")
 
@@ -78,30 +93,53 @@ class InterviewEngine:
                 "certifications": [],
             }
 
-    def generate_questions(self, resume_data):
-        """Generate interview questions based on resume data"""
+    def generate_questions(self, resume_data, language='en'):
+        """Generate interview questions based on resume data in specified language"""
         skills = ", ".join(resume_data.get("skills", []))
         experience = resume_data.get("experience", [])
         projects = resume_data.get("projects", [])
         num_questions = Config.NUM_INTERVIEW_QUESTIONS
 
-        prompt = f"""
-        Based on this candidate's profile, generate exactly {num_questions} interview questions.
+        # Get language-specific instructions
+        language_info = Config.SUPPORTED_LANGUAGES.get(language, Config.SUPPORTED_LANGUAGES['en'])
+        language_name = language_info['name']
 
-        Candidate Profile:
-        - Skills: {skills}
-        - Experience: {len(experience)} positions
-        - Projects: {len(projects)} projects
+        if language == 'vi':
+            prompt = f"""
+            Dựa trên hồ sơ của ứng viên này, hãy tạo chính xác {num_questions} câu hỏi phỏng vấn bằng tiếng Việt.
 
-        Generate questions in these categories:
-        1. 3 Technical questions about their skills
-        2. 2 Behavioral questions about teamwork and problem-solving
-        3. 2 Questions about their experience and projects
-        4. 2 Situational questions
-        5. 1 Question about career goals
+            Hồ sơ ứng viên:
+            - Kỹ năng: {skills}
+            - Kinh nghiệm: {len(experience)} vị trí
+            - Dự án: {len(projects)} dự án
 
-        Return each question on a new line, numbered 1-{num_questions}.
-        """
+            Tạo câu hỏi theo các danh mục sau:
+            1. 3 câu hỏi kỹ thuật về kỹ năng của họ
+            2. 2 câu hỏi hành vi về làm việc nhóm và giải quyết vấn đề
+            3. 2 câu hỏi về kinh nghiệm và dự án của họ
+            4. 2 câu hỏi tình huống
+            5. 1 câu hỏi về mục tiêu nghề nghiệp
+
+            Trả về mỗi câu hỏi trên một dòng mới, đánh số từ 1-{num_questions}.
+            """
+        else:
+            prompt = f"""
+            Based on this candidate's profile, generate exactly {num_questions} interview questions in {language_name}.
+
+            Candidate Profile:
+            - Skills: {skills}
+            - Experience: {len(experience)} positions
+            - Projects: {len(projects)} projects
+
+            Generate questions in these categories:
+            1. 3 Technical questions about their skills
+            2. 2 Behavioral questions about teamwork and problem-solving
+            3. 2 Questions about their experience and projects
+            4. 2 Situational questions
+            5. 1 Question about career goals
+
+            Return each question on a new line, numbered 1-{num_questions}.
+            """
 
         try:
             response = self.model.generate_content(prompt)
@@ -118,18 +156,33 @@ class InterviewEngine:
             return questions[:num_questions]
         except Exception as e:
             print(f"Error generating questions: {e}")
-            return [
-                "Tell me about yourself and your background.",
-                "What are your greatest strengths?",
-                "Describe a challenging project you worked on.",
-                "How do you handle tight deadlines?",
-                "What interests you about this role?",
-                "Tell me about a time you worked in a team.",
-                "How do you stay updated with new technologies?",
-                "What are your career goals?",
-                "Describe a problem you solved creatively.",
-                "Why should we hire you?",
-            ]
+            # Return fallback questions in the appropriate language
+            if language == 'vi':
+                return [
+                    "Hãy kể về bản thân và nền tảng của bạn.",
+                    "Điểm mạnh lớn nhất của bạn là gì?",
+                    "Mô tả một dự án thử thách mà bạn đã làm.",
+                    "Bạn xử lý deadline gấp như thế nào?",
+                    "Điều gì khiến bạn quan tâm đến vị trí này?",
+                    "Kể về một lần bạn làm việc trong nhóm.",
+                    "Bạn cập nhật công nghệ mới như thế nào?",
+                    "Mục tiêu nghề nghiệp của bạn là gì?",
+                    "Mô tả một vấn đề bạn đã giải quyết một cách sáng tạo.",
+                    "Tại sao chúng tôi nên tuyển bạn?",
+                ]
+            else:
+                return [
+                    "Tell me about yourself and your background.",
+                    "What are your greatest strengths?",
+                    "Describe a challenging project you worked on.",
+                    "How do you handle tight deadlines?",
+                    "What interests you about this role?",
+                    "Tell me about a time you worked in a team.",
+                    "How do you stay updated with new technologies?",
+                    "What are your career goals?",
+                    "Describe a problem you solved creatively.",
+                    "Why should we hire you?",
+                ]
 
     def evaluate_answer(self, question, answer):
         """Evaluate interview answer using AI and similarity scoring"""

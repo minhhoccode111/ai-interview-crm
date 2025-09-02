@@ -9,6 +9,7 @@ let questions = [];
 let currentQuestionIndex = 0;
 let isRecording = false;
 let isLoggedIn = false;
+let selectedLanguage = "en"; // Default language
 
 // API base URL
 const API_BASE = window.location.origin + "/api";
@@ -86,9 +87,7 @@ function initializeEventListeners() {
 
   if (learnMoreBtn) {
     learnMoreBtn.addEventListener("click", () => {
-      document
-        .getElementById("features")
-        .scrollIntoView({ behavior: "smooth" });
+      document.getElementById("features").scrollIntoView({ behavior: "smooth" });
     });
   }
 
@@ -115,6 +114,9 @@ function initializeEventListeners() {
 
   // Interview events
   initializeInterviewEvents();
+
+  // Language selection
+  initializeLanguageSelection();
 }
 
 // Initialize navigation
@@ -203,24 +205,20 @@ function initializeModal() {
         // Switch to register
         modalTitle.textContent = "Sign Up";
         authSubmit.textContent = "Sign Up";
-        switchText.innerHTML =
-          'Already have an account? <a href="#" id="switchMode">Login</a>';
+        switchText.innerHTML = 'Already have an account? <a href="#" id="switchMode">Login</a>';
         nameGroup.style.display = "block";
         nameGroup.querySelector("input").required = true;
       } else {
         // Switch to login
         modalTitle.textContent = "Login";
         authSubmit.textContent = "Login";
-        switchText.innerHTML =
-          'Don\'t have an account? <a href="#" id="switchMode">Sign up</a>';
+        switchText.innerHTML = 'Don\'t have an account? <a href="#" id="switchMode">Sign up</a>';
         nameGroup.style.display = "none";
         nameGroup.querySelector("input").required = false;
       }
 
       // Re-attach event listener to new switch link
-      document
-        .getElementById("switchMode")
-        .addEventListener("click", arguments.callee);
+      document.getElementById("switchMode").addEventListener("click", arguments.callee);
     });
   }
 
@@ -243,15 +241,13 @@ function showModal(mode = "login") {
   if (mode === "register") {
     modalTitle.textContent = "Sign Up";
     authSubmit.textContent = "Sign Up";
-    switchText.innerHTML =
-      'Already have an account? <a href="#" id="switchMode">Login</a>';
+    switchText.innerHTML = 'Already have an account? <a href="#" id="switchMode">Login</a>';
     nameGroup.style.display = "block";
     nameGroup.querySelector("input").required = true;
   } else {
     modalTitle.textContent = "Login";
     authSubmit.textContent = "Login";
-    switchText.innerHTML =
-      'Don\'t have an account? <a href="#" id="switchMode">Sign up</a>';
+    switchText.innerHTML = 'Don\'t have an account? <a href="#" id="switchMode">Sign up</a>';
     nameGroup.style.display = "none";
     nameGroup.querySelector("input").required = false;
   }
@@ -261,8 +257,7 @@ function showModal(mode = "login") {
   // Re-initialize switch mode event
   document.getElementById("switchMode")?.addEventListener("click", (e) => {
     e.preventDefault();
-    const currentMode =
-      modalTitle.textContent === "Login" ? "register" : "login";
+    const currentMode = modalTitle.textContent === "Login" ? "register" : "login";
     showModal(currentMode);
   });
 }
@@ -286,8 +281,7 @@ async function handleAuthSubmit(e) {
   const email = formData.get("email");
   const password = formData.get("password");
   const fullName = formData.get("fullName");
-  const isRegister =
-    document.getElementById("modalTitle").textContent === "Sign Up";
+  const isRegister = document.getElementById("modalTitle").textContent === "Sign Up";
 
   if (!email || !password) {
     showNotification("Please fill in all required fields", "error");
@@ -303,9 +297,7 @@ async function handleAuthSubmit(e) {
 
   try {
     const endpoint = isRegister ? "/auth/register" : "/auth/login";
-    const body = isRegister
-      ? { email, password, full_name: fullName }
-      : { email, password };
+    const body = isRegister ? { email, password, full_name: fullName } : { email, password };
 
     const response = await fetch(API_BASE + endpoint, {
       method: "POST",
@@ -330,7 +322,7 @@ async function handleAuthSubmit(e) {
             user_id: data.user_id,
             full_name: data.full_name,
             email: email,
-          }),
+          })
         );
 
         isLoggedIn = true;
@@ -515,7 +507,10 @@ async function startInterviewWithResume(resumeId) {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ resume_id: resumeId }),
+      body: JSON.stringify({
+        resume_id: resumeId,
+        language: selectedLanguage,
+      }),
     });
 
     const data = await response.json();
@@ -741,8 +736,7 @@ function stopRecording() {
     // Update status
     const audioStatus = document.getElementById("audioStatus");
     if (audioStatus) {
-      audioStatus.textContent =
-        "Recording complete. You can play it back or submit.";
+      audioStatus.textContent = "Recording complete. You can play it back or submit.";
     }
   }
 }
@@ -784,11 +778,7 @@ async function submitAnswer(type) {
     formData.append("text_answer", textAnswer.value.trim());
   } else {
     if (window.currentAudioFile) {
-      formData.append(
-        "audio",
-        window.currentAudioFile,
-        window.currentAudioFile.name,
-      );
+      formData.append("audio", window.currentAudioFile, window.currentAudioFile.name);
     } else if (window.currentAudioBlob) {
       formData.append("audio", window.currentAudioBlob, "answer.wav");
     } else {
@@ -904,15 +894,12 @@ async function completeInterview() {
   showLoading(true);
 
   try {
-    const response = await fetch(
-      API_BASE + `/interview/complete/${currentInterviewId}`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+    const response = await fetch(API_BASE + `/interview/complete/${currentInterviewId}`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
       },
-    );
+    });
 
     const data = await response.json();
 
@@ -1032,8 +1019,7 @@ function updateRecentInterviews(interviews) {
   if (!container) return;
 
   if (interviews.length === 0) {
-    container.innerHTML =
-      '<p>No interviews yet. <a href="/interview">Start your first interview</a></p>';
+    container.innerHTML = '<p>No interviews yet. <a href="/interview">Start your first interview</a></p>';
     return;
   }
 
@@ -1047,7 +1033,7 @@ function updateRecentInterviews(interviews) {
                 ${interview.completed ? "Completed" : "In Progress"}
             </div>
         </div>
-    `,
+    `
     )
     .join("");
 }
@@ -1135,31 +1121,29 @@ function requireAuth() {
 }
 
 // Audio recording
-document
-  .getElementById("start-recording")
-  ?.addEventListener("click", async () => {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      mediaRecorder = new MediaRecorder(stream);
+document.getElementById("start-recording")?.addEventListener("click", async () => {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    mediaRecorder = new MediaRecorder(stream);
 
-      mediaRecorder.ondataavailable = (event) => {
-        audioChunks.push(event.data);
-      };
+    mediaRecorder.ondataavailable = (event) => {
+      audioChunks.push(event.data);
+    };
 
-      mediaRecorder.onstop = () => {
-        const audioBlob = new Blob(audioChunks, { type: "audio/wav" });
-        // Process this blob in submitAnswer()
-      };
+    mediaRecorder.onstop = () => {
+      const audioBlob = new Blob(audioChunks, { type: "audio/wav" });
+      // Process this blob in submitAnswer()
+    };
 
-      mediaRecorder.start();
-      audioChunks = [];
+    mediaRecorder.start();
+    audioChunks = [];
 
-      document.getElementById("start-recording").disabled = true;
-      document.getElementById("stop-recording").disabled = false;
-    } catch (error) {
-      console.error("Error accessing microphone:", error);
-    }
-  });
+    document.getElementById("start-recording").disabled = true;
+    document.getElementById("stop-recording").disabled = false;
+  } catch (error) {
+    console.error("Error accessing microphone:", error);
+  }
+});
 
 document.getElementById("stop-recording")?.addEventListener("click", () => {
   mediaRecorder.stop();
@@ -1169,78 +1153,143 @@ document.getElementById("stop-recording")?.addEventListener("click", () => {
 });
 
 // Submit answer
-document
-  .getElementById("submit-answer")
-  ?.addEventListener("click", async () => {
-    const token = localStorage.getItem("token");
-    const formData = new FormData();
-    formData.append("interview_id", currentInterviewId);
-    formData.append("question", currentQuestion);
+document.getElementById("submit-answer")?.addEventListener("click", async () => {
+  const token = localStorage.getItem("token");
+  const formData = new FormData();
+  formData.append("interview_id", currentInterviewId);
+  formData.append("question", currentQuestion);
 
-    if (audioChunks.length > 0) {
-      const audioBlob = new Blob(audioChunks, { type: "audio/wav" });
-      formData.append("audio", audioBlob, "answer.wav");
-    } else {
-      const textAnswer = document.getElementById("text-answer").value;
-      if (!textAnswer) {
-        alert("Please provide an answer");
-        return;
-      }
-      formData.append("text_answer", textAnswer);
+  if (audioChunks.length > 0) {
+    const audioBlob = new Blob(audioChunks, { type: "audio/wav" });
+    formData.append("audio", audioBlob, "answer.wav");
+  } else {
+    const textAnswer = document.getElementById("text-answer").value;
+    if (!textAnswer) {
+      alert("Please provide an answer");
+      return;
     }
+    formData.append("text_answer", textAnswer);
+  }
 
-    try {
-      const response = await fetch("/api/interview/process", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: formData,
-      });
+  try {
+    const response = await fetch("/api/interview/process", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    });
 
-      const data = await response.json();
-      if (response.ok) {
-        // Display feedback
-        document.getElementById("feedback").innerHTML = `
+    const data = await response.json();
+    if (response.ok) {
+      // Display feedback
+      document.getElementById("feedback").innerHTML = `
                 <h3>Feedback</h3>
                 <p>Score: ${data.evaluation.score}/100</p>
                 <p>${data.evaluation.feedback}</p>
             `;
 
-        // Set next question
-        if (data.next_question) {
-          currentQuestion = data.next_question;
-          document.getElementById("current-question").textContent =
-            currentQuestion;
-          document.getElementById("text-answer").value = "";
-        } else {
-          // Interview complete
-          const completeResp = await fetch(
-            `/api/interview/complete/${currentInterviewId}`,
-            {
-              method: "POST",
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            },
-          );
+      // Set next question
+      if (data.next_question) {
+        currentQuestion = data.next_question;
+        document.getElementById("current-question").textContent = currentQuestion;
+        document.getElementById("text-answer").value = "";
+      } else {
+        // Interview complete
+        const completeResp = await fetch(`/api/interview/complete/${currentInterviewId}`, {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
-          const completeData = await completeResp.json();
-          if (completeResp.ok) {
-            document.querySelector(".interview-section").style.display = "none";
-            document.querySelector(".report-section").style.display = "block";
-            document.getElementById("report-content").innerHTML = `
+        const completeData = await completeResp.json();
+        if (completeResp.ok) {
+          document.querySelector(".interview-section").style.display = "none";
+          document.querySelector(".report-section").style.display = "block";
+          document.getElementById("report-content").innerHTML = `
                         <h3>Overall Feedback</h3>
                         <p>${completeData.feedback}</p>
                         <h3>Recommendations</h3>
                         <p>${completeData.recommendations}</p>
                     `;
-            document.getElementById("download-report").href =
-              completeData.report_url;
-          }
+          document.getElementById("download-report").href = completeData.report_url;
         }
       }
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+});
+
+// Initialize language selection
+function initializeLanguageSelection() {
+  // Load user's preferred language
+  loadUserLanguagePreference();
+
+  // Add event listeners to language options
+  const languageOptions = document.querySelectorAll(".language-option");
+  languageOptions.forEach((option) => {
+    option.addEventListener("click", function () {
+      const langCode = this.getAttribute("data-lang");
+      selectLanguage(langCode);
+    });
+  });
+}
+
+// Load user's language preference
+async function loadUserLanguagePreference() {
+  const token = localStorage.getItem("token");
+  if (!token) return;
+
+  try {
+    const response = await fetch(API_BASE + "/language/preference", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      selectedLanguage = data.language || "en";
+      updateLanguageUI(selectedLanguage);
+    }
+  } catch (error) {
+    console.error("Error loading language preference:", error);
+  }
+}
+
+// Select a language
+async function selectLanguage(langCode) {
+  selectedLanguage = langCode;
+  updateLanguageUI(langCode);
+
+  // Save preference if user is logged in
+  const token = localStorage.getItem("token");
+  if (token) {
+    try {
+      await fetch(API_BASE + "/language/preference", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ language: langCode }),
+      });
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error saving language preference:", error);
+    }
+  }
+}
+
+// Update language UI
+function updateLanguageUI(langCode) {
+  const languageOptions = document.querySelectorAll(".language-option");
+  languageOptions.forEach((option) => {
+    if (option.getAttribute("data-lang") === langCode) {
+      option.classList.add("active");
+    } else {
+      option.classList.remove("active");
     }
   });
+}

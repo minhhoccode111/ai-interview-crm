@@ -27,6 +27,23 @@ class Config:
     GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
     NUM_INTERVIEW_QUESTIONS = int(os.getenv("NUM_INTERVIEW_QUESTIONS", 10))
 
+    # Language configuration
+    SUPPORTED_LANGUAGES = {
+        "en": {
+            "name": "English",
+            "native_name": "English",
+            "whisper_code": "en",
+            "tfidf_stopwords": "english"
+        },
+        "vi": {
+            "name": "Vietnamese",
+            "native_name": "Tiếng Việt",
+            "whisper_code": "vi",
+            "tfidf_stopwords": None  # No built-in Vietnamese stopwords in sklearn
+        }
+    }
+    DEFAULT_LANGUAGE = os.getenv("DEFAULT_LANGUAGE", "en")
+
     # Application settings
     DEBUG = os.getenv("FLASK_DEBUG", "False").lower() in ["true", "1", "yes"]
     TESTING = os.getenv("FLASK_TESTING", "False").lower() in ["true", "1", "yes"]
