@@ -33,14 +33,14 @@ class Config:
             "name": "English",
             "native_name": "English",
             "whisper_code": "en",
-            "tfidf_stopwords": "english"
+            "tfidf_stopwords": "english",
         },
         "vi": {
             "name": "Vietnamese",
             "native_name": "Tiếng Việt",
             "whisper_code": "vi",
-            "tfidf_stopwords": None  # No built-in Vietnamese stopwords in sklearn
-        }
+            "tfidf_stopwords": None,  # No built-in Vietnamese stopwords in sklearn
+        },
     }
     DEFAULT_LANGUAGE = os.getenv("DEFAULT_LANGUAGE", "en")
 
@@ -95,4 +95,3 @@ config = {
     "testing": TestingConfig,
     "default": DevelopmentConfig,
 }
-

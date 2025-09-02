@@ -16,7 +16,7 @@ class VoiceProcessor:
             print(f"Error loading Whisper model: {e}")
             self.model = None
 
-    def speech_to_text(self, audio_path, language='en'):
+    def speech_to_text(self, audio_path, language="en"):
         """Convert speech audio file to text
 
         Args:
@@ -94,4 +94,3 @@ class VoiceProcessor:
         # This could be implemented with a TTS service like gTTS or Azure Speech
         print(f"TTS: {text}")
         return "TTS not implemented"
-

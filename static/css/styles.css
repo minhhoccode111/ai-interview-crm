@@ -202,7 +202,9 @@ body {
   padding: 2rem;
   border-radius: 12px;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   border: 1px solid #e2e8f0;
 }
 
@@ -723,7 +725,11 @@ textarea:focus {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background: conic-gradient(#48bb78 0deg, #48bb78 calc(var(--score) * 3.6deg), #e2e8f0 calc(var(--score) * 3.6deg));
+  background: conic-gradient(
+    #48bb78 0deg,
+    #48bb78 calc(var(--score) * 3.6deg),
+    #e2e8f0 calc(var(--score) * 3.6deg)
+  );
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,11 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mock Interview - AI Interview CRM</title>
     <link rel="stylesheet" href="/static/css/styles.css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <nav class="navbar">
@@ -47,7 +50,10 @@
         <div id="uploadSection" class="interview-section">
           <div class="section-header">
             <h1>Start Your Mock Interview</h1>
-            <p>Upload your resume or enter your information to get personalized interview questions</p>
+            <p>
+              Upload your resume or enter your information to get personalized
+              interview questions
+            </p>
           </div>
 
           <!-- Language Selection -->
@@ -78,8 +84,15 @@
               <h3>Upload PDF Resume</h3>
               <p>Select your resume file (PDF format)</p>
               <div id="fileSection" style="display: none">
-                <input type="file" id="resumeFile" class="file-input" accept=".pdf" />
-                <label for="resumeFile" class="file-input-label"> <i class="fas fa-upload"></i> Choose File </label>
+                <input
+                  type="file"
+                  id="resumeFile"
+                  class="file-input"
+                  accept=".pdf"
+                />
+                <label for="resumeFile" class="file-input-label">
+                  <i class="fas fa-upload"></i> Choose File
+                </label>
                 <div id="fileName" class="file-name"></div>
               </div>
             </div>
@@ -119,32 +132,47 @@ EDUCATION:
           </div>
 
           <div class="upload-actions">
-            <button id="submitResume" class="btn btn-primary" disabled><i class="fas fa-arrow-right"></i> Process Resume & Start Interview</button>
+            <button id="submitResume" class="btn btn-primary" disabled>
+              <i class="fas fa-arrow-right"></i> Process Resume & Start
+              Interview
+            </button>
           </div>
         </div>
 
         <!-- Interview Section -->
-        <div id="interviewSection" class="interview-section" style="display: none">
+        <div
+          id="interviewSection"
+          class="interview-section"
+          style="display: none"
+        >
           <div class="interview-header">
             <div class="interview-progress">
               <div class="progress-bar-container">
                 <div class="progress-bar" id="progressBar"></div>
               </div>
-              <div class="question-counter">Question <span id="questionCounter">1 of 10</span></div>
+              <div class="question-counter">
+                Question <span id="questionCounter">1 of 10</span>
+              </div>
             </div>
           </div>
 
           <!-- Question Display -->
           <div class="question-display" id="questionDisplay">
             <h3>Loading question...</h3>
-            <p>Please wait while we prepare your personalized interview question.</p>
+            <p>
+              Please wait while we prepare your personalized interview question.
+            </p>
           </div>
 
           <!-- Answer Input -->
           <div class="answer-input">
             <div class="input-tabs">
-              <button class="tab-button active" data-tab="text"><i class="fas fa-keyboard"></i> Text Answer</button>
-              <button class="tab-button" data-tab="audio"><i class="fas fa-microphone"></i> Voice Answer</button>
+              <button class="tab-button active" data-tab="text">
+                <i class="fas fa-keyboard"></i> Text Answer
+              </button>
+              <button class="tab-button" data-tab="audio">
+                <i class="fas fa-microphone"></i> Voice Answer
+              </button>
             </div>
 
             <!-- Text Tab -->
@@ -160,7 +188,9 @@ Tips:
                 rows="6"
               ></textarea>
               <div class="tab-actions">
-                <button id="submitTextAnswer" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit Answer</button>
+                <button id="submitTextAnswer" class="btn btn-primary">
+                  <i class="fas fa-paper-plane"></i> Submit Answer
+                </button>
               </div>
             </div>
 
@@ -170,22 +200,41 @@ Tips:
                 <button id="recordBtn" class="record-button">
                   <i class="fas fa-microphone"></i>
                 </button>
-                <div class="audio-status" id="audioStatus">Click record to start</div>
+                <div class="audio-status" id="audioStatus">
+                  Click record to start
+                </div>
               </div>
-              <audio id="audioPreview" controls style="display: none; width: 100%; margin: 1rem 0"></audio>
+              <audio
+                id="audioPreview"
+                controls
+                style="display: none; width: 100%; margin: 1rem 0"
+              ></audio>
               <div class="upload-audio-option">
-                <input type="file" id="audioFile" class="file-input" accept="audio/*" />
-                <label for="audioFile" class="file-input-label"> <i class="fas fa-upload"></i> Choose Audio File </label>
+                <input
+                  type="file"
+                  id="audioFile"
+                  class="file-input"
+                  accept="audio/*"
+                />
+                <label for="audioFile" class="file-input-label">
+                  <i class="fas fa-upload"></i> Choose Audio File
+                </label>
                 <div id="audioFileName" class="file-name"></div>
               </div>
               <div class="tab-actions">
-                <button id="submitAudioAnswer" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit Recording</button>
+                <button id="submitAudioAnswer" class="btn btn-primary">
+                  <i class="fas fa-paper-plane"></i> Submit Recording
+                </button>
               </div>
             </div>
           </div>
 
           <!-- Evaluation Display -->
-          <div id="evaluationDisplay" class="evaluation-display" style="display: none">
+          <div
+            id="evaluationDisplay"
+            class="evaluation-display"
+            style="display: none"
+          >
             <!-- Evaluation content will be inserted here -->
           </div>
         </div>
@@ -194,11 +243,26 @@ Tips:
         <div class="instructions-panel">
           <h3><i class="fas fa-info-circle"></i> Interview Tips</h3>
           <ul>
-            <li><strong>Be Specific:</strong> Use concrete examples from your experience</li>
-            <li><strong>STAR Method:</strong> Situation, Task, Action, Result for behavioral questions</li>
-            <li><strong>Think Aloud:</strong> Explain your thought process for technical questions</li>
-            <li><strong>Stay Calm:</strong> Take your time to formulate clear responses</li>
-            <li><strong>Ask Questions:</strong> Show engagement by asking clarifying questions</li>
+            <li>
+              <strong>Be Specific:</strong> Use concrete examples from your
+              experience
+            </li>
+            <li>
+              <strong>STAR Method:</strong> Situation, Task, Action, Result for
+              behavioral questions
+            </li>
+            <li>
+              <strong>Think Aloud:</strong> Explain your thought process for
+              technical questions
+            </li>
+            <li>
+              <strong>Stay Calm:</strong> Take your time to formulate clear
+              responses
+            </li>
+            <li>
+              <strong>Ask Questions:</strong> Show engagement by asking
+              clarifying questions
+            </li>
           </ul>
         </div>
       </div>
@@ -559,7 +623,8 @@ Tips:
         // Override showInterviewComplete to update progress
         const originalShowInterviewComplete = window.showInterviewComplete;
         window.showInterviewComplete = function (data) {
-          if (originalShowInterviewComplete) originalShowInterviewComplete(data);
+          if (originalShowInterviewComplete)
+            originalShowInterviewComplete(data);
           updateProgressStep(3);
         };
       });

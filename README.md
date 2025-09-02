@@ -124,7 +124,10 @@ cp .env.example .env
 # 5️⃣ Initialize database
 python -c "from models.db import init_db; from app import create_app; init_db(create_app())"
 
-# 6️⃣ Start the application
+# 6 Migrate database for language support
+python migrate_language_support.py
+
+# 7 Start the application
 python app.py
 ```
 

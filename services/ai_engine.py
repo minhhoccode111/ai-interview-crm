@@ -11,7 +11,7 @@ genai.configure(api_key=Config.GEMINI_API_KEY)
 
 
 class InterviewEngine:
-    def __init__(self, language='en'):
+    def __init__(self, language="en"):
         """Initialize the interview engine with language support
 
         Args:
@@ -20,8 +20,10 @@ class InterviewEngine:
         self.language = language
 
         # Configure TF-IDF vectorizer based on language
-        language_config = Config.SUPPORTED_LANGUAGES.get(language, Config.SUPPORTED_LANGUAGES['en'])
-        stopwords = language_config.get('tfidf_stopwords')
+        language_config = Config.SUPPORTED_LANGUAGES.get(
+            language, Config.SUPPORTED_LANGUAGES["en"]
+        )
+        stopwords = language_config.get("tfidf_stopwords")
 
         if stopwords:
             self.vectorizer = TfidfVectorizer(max_features=1000, stop_words=stopwords)
@@ -93,7 +95,7 @@ class InterviewEngine:
                 "certifications": [],
             }
 
-    def generate_questions(self, resume_data, language='en'):
+    def generate_questions(self, resume_data, language="en"):
         """Generate interview questions based on resume data in specified language"""
         skills = ", ".join(resume_data.get("skills", []))
         experience = resume_data.get("experience", [])
@@ -101,10 +103,12 @@ class InterviewEngine:
         num_questions = Config.NUM_INTERVIEW_QUESTIONS
 
         # Get language-specific instructions
-        language_info = Config.SUPPORTED_LANGUAGES.get(language, Config.SUPPORTED_LANGUAGES['en'])
-        language_name = language_info['name']
+        language_info = Config.SUPPORTED_LANGUAGES.get(
+            language, Config.SUPPORTED_LANGUAGES["en"]
+        )
+        language_name = language_info["name"]
 
-        if language == 'vi':
+        if language == "vi":
             prompt = f"""
             Dựa trên hồ sơ của ứng viên này, hãy tạo chính xác {num_questions} câu hỏi phỏng vấn bằng tiếng Việt.
 
@@ -157,7 +161,7 @@ class InterviewEngine:
         except Exception as e:
             print(f"Error generating questions: {e}")
             # Return fallback questions in the appropriate language
-            if language == 'vi':
+            if language == "vi":
                 return [
                     "Hãy kể về bản thân và nền tảng của bạn.",
                     "Điểm mạnh lớn nhất của bạn là gì?",
@@ -430,4 +434,3 @@ class InterviewEngine:
                 result[field] = f"No {field.replace('_', ' ')} provided."
 
         return result
-

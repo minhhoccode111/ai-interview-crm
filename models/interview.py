@@ -1,12 +1,13 @@
 from models.db import db
 from datetime import datetime
 
+
 class Interview(db.Model):
-    __tablename__ = 'interviews'
+    __tablename__ = "interviews"
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    language = db.Column(db.String(5), default='en')  # Interview language
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    language = db.Column(db.String(5), default="en")  # Interview language
     start_time = db.Column(db.DateTime)
     end_time = db.Column(db.DateTime)
     transcript = db.Column(db.Text)
@@ -16,12 +17,13 @@ class Interview(db.Model):
 
     def to_dict(self):
         return {
-            'id': self.id,
-            'user_id': self.user_id,
-            'language': self.language,
-            'start_time': self.start_time.isoformat() if self.start_time else None,
-            'end_time': self.end_time.isoformat() if self.end_time else None,
-            'transcript': self.transcript,
-            'evaluation': self.evaluation,
-            'created_at': self.created_at.isoformat()
+            "id": self.id,
+            "user_id": self.user_id,
+            "language": self.language,
+            "start_time": self.start_time.isoformat() if self.start_time else None,
+            "end_time": self.end_time.isoformat() if self.end_time else None,
+            "transcript": self.transcript,
+            "evaluation": self.evaluation,
+            "created_at": self.created_at.isoformat(),
         }
+
